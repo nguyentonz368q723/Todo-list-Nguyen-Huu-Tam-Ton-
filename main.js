@@ -12,7 +12,6 @@ todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 deleteAllButton.addEventListener('click', deleteAllTodos);
 completeAllButton.addEventListener('click', completeAllTodos);
-filterOptions.addEventListener('click', filterTodos);
 
 //Functions
 function addTodo(event) {
@@ -35,11 +34,16 @@ function addTodo(event) {
     editButton.classList.add("edit-button");
     todoDiv.appendChild(editButton);
 
-    // Check mark button
-    const completeButton = document.createElement("button");
-    completeButton.innerHTML = '<i class="fas fa-check"></i>';
-    completeButton.classList.add("complete-button");
-    todoDiv.appendChild(completeButton);
+    // const descriptionTextarea = document.createElement("textarea");
+    // descriptionTextarea.placeholder = "Enter description";
+    // descriptionTextarea.classList.add("description-textarea");
+    // todoDiv.appendChild(descriptionTextarea);
+    
+    // // Check mark button
+    // const completeButton = document.createElement("button");
+    // completeButton.innerHTML = '<i class="fas fa-check"></i>';
+    // completeButton.classList.add("complete-button");
+    // todoDiv.appendChild(completeButton);
 
     // Check trash button
     const trashButton = document.createElement("button");
@@ -52,6 +56,24 @@ function addTodo(event) {
 
     // Clear the input
     todoInput.value = '';
+
+        // // Store description in data attribute
+        // todoDiv.dataset.description = descriptionTextarea.value;
+
+        // // Create details button
+        // const detailsButton = document.createElement("button");
+        // detailsButton.innerText = 'Details';
+        // detailsButton.classList.add("details-button");
+        // detailsButton.addEventListener('click', showDetails);
+        // todoDiv.appendChild(detailsButton);
+    
+        //Append to the List
+        todoList.appendChild(todoDiv);
+    
+        // Clear the input and textarea
+        todoInput.value = '';
+        descriptionTextarea.value = '';
+    
 }
 
 function deleteCheck(event) {
@@ -114,35 +136,12 @@ function toggleComplete(event) {
     }
 }
 
-// function filterTodos() {
-//     const todos = document.querySelectorAll('.todo');
-//     const filterOption = document.querySelector('.filter-todo');
-
-//     todos.forEach(function (todo) {
-//         switch (filterOption.value) {
-//             case "All":
-//                 todo.style.display = "flex";
-//                 break;
-//             case "Completed":
-//                 todo.classList.toggle('hidden', !todo.classList.contains('complete-button'));
-//                 break;
-//             case "Uncompleted":
-//                 todo.classList.toggle('hidden', todo.classList.contains('complete-button'));
-//                 break;
-//         }
-//     });
-// }
-
-
-// // Add an event listener for the 'change' event on the filter dropdown
-// document.querySelector('.filter-todo').addEventListener('change', filterTodos);
-
 function filterTodos() {
     const todos = document.querySelectorAll('.todo');
     const selectedOption = filterOptions.value;
 
     todos.forEach((todo) => {
-        const completed = todo.querySelector('.complete-button').classList.contains('complete-button');
+        const completed = todo.classList.contains('complete-button');
         
         switch (selectedOption) {
             case 'All':
@@ -157,3 +156,52 @@ function filterTodos() {
         }
     });
 }
+
+// Add an event listener for the 'change' event on the filter dropdown
+filterOptions.addEventListener('change', filterTodos);
+
+// function editTodo(event) {
+//     const item = event.target;
+//     const todoItem = item.parentElement;
+//     document.getElementById('editTitle').value = todoItem.querySelector('.todo-item').innerText;
+//     document.getElementById('editDescription').value = todoItem.dataset.description;
+//     document.getElementById('myModal').style.display = 'block';
+// }
+
+// function updateTodo(event) {
+//     event.preventDefault();
+//     const todoItem = event.target.parentElement;
+//     todoItem.querySelector('.todo-item').innerText = document.getElementById('editTitle').value;
+//     todoItem.dataset.description = document.getElementById('editDescription').value;
+//     closeModal();
+// }
+
+// function closeModal() {
+//     document.getElementById('myModal').style.display = 'none';
+// }
+
+// todoList.addEventListener('click', toggleComplete);
+// todoList.addEventListener('click', function(event) {
+//     if (event.target.classList.contains('edit-button')) {
+//         editTodo(event);
+//     }
+// });
+
+// document.getElementById('editForm').addEventListener('submit', updateTodo);
+
+// // Add event listener for the 'details' button
+// todoList.addEventListener('click', function(event) {
+//     if (event.target.classList.contains('details-button')) {
+//         showDetails(event);
+//     }
+// });
+
+// // Show details function
+// function showDetails(event) {
+//     const item = event.target;
+//     const todoItem = item.parentElement;
+//     document.getElementById('editTitle').value = todoItem.querySelector('.todo-item').innerText;
+//     document.getElementById('editDescription').value = todoItem.dataset.description;
+//     document.getElementById('myModal').style.display = 'block';
+// }
+
