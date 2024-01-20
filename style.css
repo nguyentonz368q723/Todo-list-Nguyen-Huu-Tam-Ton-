@@ -6,7 +6,7 @@
 
 
 body {
-    background-image: linear-gradient(120deg, #e8d4ff, #befffba5);
+    background-image: linear-gradient(120deg, #e8d4ff, #0f1652a5);
     color: rgb(212, 126, 13);
     font-family: 55vh;
     font-size: 1.5vw;
@@ -31,19 +31,16 @@ form {
 } */
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 700px) {
     body {
-        font-size: 2vw; /* Adjust font size for smaller screens */
+        font-size: 2vw; 
     }
 
 
     form input {
-        width: 80%; /* Adjust input width for smaller screens */
-        height: 3vw; /* Adjust input height for smaller screens */
+        width: 80%; 
+        height: 2vw; 
     }
-
-
-    /* ... Add more styles for smaller screens */
 }
 
 
@@ -62,8 +59,8 @@ form button {
     height: 2.5vw;
     padding: 0.5vw;
     font-size: 2vw;
-    border: 1px solid rgb(224, 198, 198);
-    background: rgb(233, 148, 148);
+    border: 1px solid rgb(50, 0, 0);
+    background: rgb(255, 212, 212);
     color: #ffffff;
     cursor: pointer;
     transition: all 0.05s ease;
@@ -78,16 +75,17 @@ form button:hover {
     color: rgb(0, 0, 0);
 }
 .todo-container {
+    margin-top: 0.1vw;
+    margin-bottom: 0.1vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-
 .todo-list {
-    margin: 2vw;
-    padding: 2vw;
+    margin: 1vw;
+    padding: 1vw;
     min-width: 60%;
     list-style: numeric;
     list-style-position: inside;
@@ -97,7 +95,7 @@ form button:hover {
 
 .todo {
     margin: 0.5vw 1vw;
-    background-color: rgba(255, 254, 218, 0.919);
+    background-color: rgba(197, 196, 171, 0.919);
     color: rgb(0, 0, 0);
     font-style: bold;
     font-size: 1.75vw;
@@ -111,9 +109,6 @@ form button:hover {
 .todo li {
     flex: 1;
 }
-
-
-
 
 .trash-button {
     background: rgb(119, 46, 46);
@@ -133,8 +128,8 @@ form button:hover {
 }
 
 
-/* .complete-button {
-    background: rgba(0, 132, 255, 0.767);
+.complete-button {
+    background: blue;
     color: rgb(255, 255, 255);
     border: black;
     padding: 0.5vw;
@@ -146,14 +141,15 @@ form button:hover {
     stop-color: #e8d4ff;
 }
 
+.complete-button::after {
+    background:cyan;
+}
 
 .complete-button:hover {
     background: rgb(255, 204, 0);
     color: rgb(0, 0, 0);
     border: white;
-
-
-} */
+}
 
 
 .edit-button {
@@ -238,14 +234,10 @@ form button:hover {
     transition: all 0.05s ease;
 }
 
-
-
-
 .complete-all-button:hover {
     background: rgb(247, 198, 255);; /* Choose your preferred color on hover */
     color: rgb(0, 10, 151);
 }
-
 
 /*
 // Style for completed items
@@ -270,42 +262,36 @@ form button:hover {
 }
 */
 
-
 .select {
-    padding: 0.5vw;
-    position: relative;
+    position: center;
     overflow: hidden;
+    min-height: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+    font-weight: bold;
+    text-align: center;
 }
-
 
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
-    margin-top: 0.3vw;
-    margin-bottom: 0.3vw;
-    height: 2.5vw;
     padding: 0.5vw;
     appearance: none;
     outline: none;
     border: none;
-    padding: 0.5vw;
     margin: 0;
     color: rgb(213, 138, 0);
     font-family: 'Times New Roman', Times, serif;
     font-size: 0.9vw;
 }
 
-
 .select::after {
     position: absolute;
-    top: 50%;
+    top: 0;
     right: 0.5vw;
     transform: translateY(-50%);
     pointer-events: none;
     color: rgb(0, 0, 0);
 }
-
-
-
-
-

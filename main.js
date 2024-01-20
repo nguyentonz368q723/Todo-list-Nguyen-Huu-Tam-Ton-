@@ -4,7 +4,7 @@ const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
 const deleteAllButton = document.querySelector('.delete-all-button');
 const completeAllButton = document.querySelector('.complete-all-button');
-// const filterOptions = document.querySelector('.filter-todo');
+const filterOptions = document.querySelector('.filter-todo');
 
 
 //Event Listeners
@@ -12,7 +12,7 @@ todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 deleteAllButton.addEventListener('click', deleteAllTodos);
 completeAllButton.addEventListener('click', completeAllTodos);
-// filterOptions.addEventListener('click', filterTodos);
+filterOptions.addEventListener('click', filterTodos);
 
 //Functions
 function addTodo(event) {
@@ -36,10 +36,10 @@ function addTodo(event) {
     todoDiv.appendChild(editButton);
 
     // Check mark button
-    // const completeButton = document.createElement("button");
-    // completeButton.innerHTML = '<i class="fas fa-check"></i>';
-    // completeButton.classList.add("complete-button");
-    // todoDiv.appendChild(completeButton);
+    const completeButton = document.createElement("button");
+    completeButton.innerHTML = '<i class="fas fa-check"></i>';
+    completeButton.classList.add("complete-button");
+    todoDiv.appendChild(completeButton);
 
     // Check trash button
     const trashButton = document.createElement("button");
@@ -114,33 +114,46 @@ function toggleComplete(event) {
     }
 }
 
+// function filterTodos() {
+//     const todos = document.querySelectorAll('.todo');
+//     const filterOption = document.querySelector('.filter-todo');
+
+//     todos.forEach(function (todo) {
+//         switch (filterOption.value) {
+//             case "All":
+//                 todo.style.display = "flex";
+//                 break;
+//             case "Completed":
+//                 todo.classList.toggle('hidden', !todo.classList.contains('complete-button'));
+//                 break;
+//             case "Uncompleted":
+//                 todo.classList.toggle('hidden', todo.classList.contains('complete-button'));
+//                 break;
+//         }
+//     });
+// }
+
+
+// // Add an event listener for the 'change' event on the filter dropdown
+// document.querySelector('.filter-todo').addEventListener('change', filterTodos);
+
 function filterTodos() {
     const todos = document.querySelectorAll('.todo');
-    const filterOption = document.querySelector('.filter-todo');
+    const selectedOption = filterOptions.value;
 
-    todos.forEach(function (todo) {
-        switch (filterOption.value) {
-            case "All":
-                todo.style.display = "flex";
+    todos.forEach((todo) => {
+        const completed = todo.querySelector('.complete-button').classList.contains('complete-button');
+        
+        switch (selectedOption) {
+            case 'All':
+                todo.style.display = 'flex';
                 break;
-            case "Completed":
-                if (todo.classList.contains('complete-button')) {
-                    todo.style.display = "flex";
-                } else {
-                    todo.style.display = "none";
-                }
+            case 'Completed':
+                todo.style.display = completed ? 'flex' : 'none';
                 break;
-            case "Uncompleted":
-                if (!todo.classList.contains('complete-button')) {
-                    todo.style.display = "flex";
-                } else {
-                    todo.style.display = "none";
-                }
+            case 'Uncompleted':
+                todo.style.display = completed ? 'none' : 'flex';
                 break;
         }
     });
 }
-
-// Add an event listener for the 'change' event on the filter dropdown
-document.querySelector('.filter-todo').addEventListener('change', filterTodos);
-
